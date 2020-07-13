@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Cart</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="clearCart()">
+                <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-list>
+                    <ion-item *ngFor="let item of cartItems">
+                        <ion-thumbnail slot="start">
+                            <ion-img [src]="item.imageUrl"></ion-img>
+                        </ion-thumbnail>
+                        <ion-label>
+                            <h2>{{item.name}}</h2>
+                            <p>{{item.price}}</p>
+                            <ion-label>
+                                <ion-button fill="clear" (click)="removeQuantity(item)">
+                                    <ion-icon name="remove"></ion-icon>
+                                </ion-button>
+                                Quantity: {{item.itemQuantity}}
+                                <ion-button fill="clear" (click)="addQunatity(item)">
+                                    <ion-icon name="add"></ion-icon>
+                                </ion-button>
+                            </ion-label>
+                        </ion-label>
+                        <ion-button fill="clear" (click)="removeItem(item)">
+                            <ion-icon name="close"></ion-icon>
+                        </ion-button>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div>
+        <ion-label *ngIf="totalCartValue!=0;  else showThis" class="ion-text-center">
+            <div>
+                <ion-label>Total: {{totalCartValue}}</ion-label>
+            </div>
+            <div>
+                <ion-button (click)="placeOrder()" color="success" [disabled]="ifOrderPlaced">Place Order</ion-button>
+            </div>
+
+        </ion-label>
+        <ng-template #showThis>
+            <p class="ion-text-center" [ngStyle]="{'color' :'grey'}">
+                You have not added anything in the cart yet!
+            </p>
+        </ng-template>
+    </div>
+    <div class="ion-text-center" *ngIf="ifDineIn===true && totalCartValue!=0">
+        <ion-button (click)="orderMore()">I want to order more!</ion-button>
+    </div>
+</ion-content>
+<ion-footer *ngIf="ifDineIn===true && totalCartValue!=0" class="ion-no-border">
+    <ion-toolbar class="ion-text-center" position="bottom">
+        <ion-button [disabled]="!ifOrderPlaced" (click)="orderDone()" color="danger">I'm done</ion-button>
+    </ion-toolbar>
+</ion-footer>

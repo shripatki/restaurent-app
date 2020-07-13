@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Scan the QR-code</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding ion-text-center">
+    <div *ngIf="restaurant!=undefined;else showThis">
+        <ion-img [src]="restaurant.imageUrl"></ion-img>
+        <h1>Welcome to {{restaurant.title}}</h1>
+        <p>You are on table {{tableNo}}</p>
+        <ion-button color="success" [routerLink]="['/home/restaurants/',restaurant.id]">
+            Start Ordering
+        </ion-button>
+        <h1>Scan again</h1>
+        <ion-button color="primary" (click)="scanBar()">
+            Scan Code
+        </ion-button>
+    </div>
+    <ng-template #showThis>
+        <div class="ion-text-center">
+            <h1>Scan QR code</h1>
+            <ion-button color="primary" (click)="scanBar()">
+                Scan Code
+            </ion-button>
+        </div>
+    </ng-template>
+</ion-content> -->

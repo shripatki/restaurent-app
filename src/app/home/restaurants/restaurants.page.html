@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Restaurants</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide>
+            <ion-img src="https://sulaindianrestaurant.com/wp-content/uploads/2019/10/authentic-Indian-food-1310x982.png"></ion-img>
+        </ion-slide>
+        <ion-slide>
+            <ion-img src="https://st3.depositphotos.com/1105977/14354/i/1600/depositphotos_143540879-stock-photo-asian-food-served-on-black.jpg"></ion-img>
+        </ion-slide>
+        <ion-slide>
+            <ion-img src="https://aajdaily.com/wp-content/uploads/2019/08/Street-Food.jpg"></ion-img>
+        </ion-slide>
+    </ion-slides>
+    <ion-grid>
+        <ion-row class="ion-no-padding">
+            <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+                <ion-list class="ion-no-padding">
+                    <ion-item *ngFor="let restaurant of restaurants" [routerLink]="['/','home','restaurants',restaurant.id]" detail>
+                        <ion-thumbnail slot="start">
+                            <ion-img [src]="restaurant.imageUrl"></ion-img>
+                        </ion-thumbnail>
+                        <ion-label>
+                            <h2>{{restaurant.title}}</h2>
+                            <p>{{restaurant.description}}</p>
+                            <div>
+                                <ion-icon name="star"></ion-icon>
+                                {{restaurant.ratings}}
+                                <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                                {{restaurant.avgPrice}} for Two
+                            </div>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,29 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "restaurant-app",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "linuxAndroidStudioPath": "/snap/bin/android-studio",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {
+    "preferences": {
+      "ScrollEnabled": "false",
+      "android-minSdkVersion": "19",
+      "BackupWebStorage": "none",
+      "SplashMaintainAspectRatio": "true",
+      "FadeSplashScreenDuration": "300",
+      "SplashShowOnlyFirstTime": "false",
+      "SplashScreen": "screen",
+      "SplashScreenDelay": "3000",
+      "FadeSplashScreen": "true",
+      "AutoHideSplashScreen": "true",
+      "ShowSplashScreen": "false",
+      "loadUrlTimeoutValue": "700000"
+    }
+  }
+}
